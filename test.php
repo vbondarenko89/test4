@@ -35,13 +35,10 @@ class BigNumber
      */
     static function sum($sNumberA, $sNumberB)
     {
-        $a = $sNumberA;
-        $b = $sNumberB;
+        $maxLength = strlen($sNumberA) >= strlen($sNumberB) ? strlen($sNumberA) : strlen($sNumberB);
 
-        $maxLength = strlen($a) >= strlen($b) ? strlen($a) : strlen($b);
-
-        $a = self::completeZero($a, $maxLength);
-        $b = self::completeZero($b, $maxLength);
+        $a = self::completeZero($sNumberA, $maxLength);
+        $b = self::completeZero($sNumberB, $maxLength);
 
         $result = '';
         $buf = 0;
@@ -66,4 +63,4 @@ class BigNumber
     }
 }
 
-echo BigNumber::sum('123456', '123');
+echo BigNumber::sum('123456', '123456');
